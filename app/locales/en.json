@@ -1,0 +1,7 @@
+{
+  "welcome": "Welcome",
+  "system_created": "System created successfully",
+  "device_offline": "Device is offline",
+  "not_found": "Record not found",
+  "unauthorized": "You are not authorized for this action"
+}

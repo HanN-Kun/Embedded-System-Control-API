@@ -1,0 +1,7 @@
+{
+  "welcome": "Hoş geldiniz",
+  "system_created": "Sistem başarıyla oluşturuldu",
+  "device_offline": "Cihaz çevrimdışı",
+  "not_found": "Kayıt bulunamadı",
+  "unauthorized": "Bu işlem için yetkiniz yok"
+}
