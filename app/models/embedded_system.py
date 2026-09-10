@@ -16,7 +16,6 @@ class EmbeddedSystem(Base):
 
     owner = relationship("User", back_populates="owned_systems")
     components = relationship("Component", back_populates="embedded_system")
-    device_accesses = relationship("DeviceAccess", back_populates="embedded_system")
     device_status = relationship("DeviceStatus", back_populates="embedded_system", uselist=False)
     user_roles = relationship("UserRole", back_populates="embedded_system")
 

@@ -47,6 +47,5 @@ def require_owner_or_superadmin(db: Session, user: User, system: EmbeddedSystem)
 
 
 def has_access(db: Session, user: User, system: EmbeddedSystem) -> bool:
-    """Herhangi bir yetkisi var mı (view dahil) — liste filtrelemede kullanılır."""
     permissions = get_permissions_for_user(db, user, system)
     return len(permissions) > 0

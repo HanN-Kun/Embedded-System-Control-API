@@ -102,7 +102,6 @@ def downgrade() -> None:
     op.drop_table('sensor_readings')
     op.drop_table('sensors')
     op.drop_table('device_status')
-    op.drop_table('device_access')
     op.drop_table('components')
     op.drop_table('embedded_systems')
     op.drop_table('users')

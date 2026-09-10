@@ -1,6 +1,5 @@
 from app.models.user import User
 from app.models.embedded_system import EmbeddedSystem
-from app.models.device_access import DeviceAccess
 from app.models.component import Component
 from app.models.sensor import Sensor
 from app.models.sensor_reading import SensorReading

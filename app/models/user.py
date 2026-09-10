@@ -17,5 +17,4 @@ class User(Base):
     is_superadmin = Column(Boolean, default=False, nullable=False)
 
     owned_systems = relationship("EmbeddedSystem", back_populates="owner")
-    device_accesses = relationship("DeviceAccess", back_populates="user")
     user_roles = relationship("UserRole", back_populates="user")
