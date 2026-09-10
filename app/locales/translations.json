@@ -1,0 +1,22 @@
+{
+  "welcome": {
+    "tr": "Hoş geldiniz",
+    "en": "Welcome"
+  },
+  "system_created": {
+    "tr": "Sistem başarıyla oluşturuldu",
+    "en": "System created successfully"
+  },
+  "device_offline": {
+    "tr": "Cihaz çevrimdışı",
+    "en": "Device is offline"
+  },
+  "not_found": {
+    "tr": "Kayıt bulunamadı",
+    "en": "Record not found"
+  },
+  "unauthorized": {
+    "tr": "Bu işlem için yetkiniz yok",
+    "en": "You are not authorized for this action"
+  }
+}
