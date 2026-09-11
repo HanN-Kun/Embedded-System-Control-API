@@ -24,7 +24,6 @@ class UserUpdate(BaseModel):
 class UserResponse(UserBase):
     id: uuid.UUID
     is_active: bool
-    is_superadmin: bool
 
     class Config:
         from_attributes = True
