@@ -34,11 +34,21 @@ def create_system(db: Session, system_data: EmbeddedSystemCreate, current_user: 
 
 
 def list_systems(db: Session, current_user: User):
-    all_systems = embedded_system_repository.get_all(db)
-    return [
-        s for s in all_systems
-        if authorization_service.has_access(db, current_user, s)
+    token_roles = getattr(current_user, "token_roles", [])
+
+    is_global_superadmin = any(
+        r["system_id"] is None and r["role"] == "superadmin"
+        for r in token_roles
+    )
+    if is_global_superadmin:
+        return embedded_system_repository.get_all(db)
+
+    system_ids = [
+        uuid.UUID(r["system_id"])
+        for r in token_roles
+        if r["system_id"] is not None
     ]
+    return embedded_system_repository.get_by_ids(db, system_ids)
 
 
 def get_system(db: Session, system_id: uuid.UUID, current_user: User):

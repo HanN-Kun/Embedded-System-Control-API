@@ -43,3 +43,8 @@ def update(db: Session, system: EmbeddedSystem):
 def delete(db: Session, system: EmbeddedSystem):
     db.delete(system)
     db.commit()
+
+def get_by_ids(db: Session, system_ids: list[uuid.UUID]):
+    if not system_ids:
+        return []
+    return db.query(EmbeddedSystem).filter(EmbeddedSystem.id.in_(system_ids)).all()

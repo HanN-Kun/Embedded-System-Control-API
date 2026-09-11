@@ -48,3 +48,5 @@ def delete(db: Session, user_role: UserRole):
 def get_roles_for_system(db: Session, embedded_system_id: uuid.UUID):
     return db.query(UserRole).filter(UserRole.embedded_system_id == embedded_system_id).all()
 
+def get_all_roles_for_user(db: Session, user_id: uuid.UUID):
+    return db.query(UserRole).filter(UserRole.user_id == user_id).all()

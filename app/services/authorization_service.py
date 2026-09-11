@@ -6,14 +6,21 @@ from app.models.user import User
 from app.models.embedded_system import EmbeddedSystem
 from app.repositories import user_role_repository
 
+ROLE_PERMISSIONS = {
+    "superadmin": {"view", "create", "update", "delete", "manage_access"},
+    "owner": {"view", "create", "update", "delete", "manage_access"},
+    "editor": {"view", "create", "update", "delete"},
+    "viewer": {"view"},
+}
 
 def get_permissions_for_user(db: Session, user: User, system: EmbeddedSystem) -> set[str]:
-    user_roles = user_role_repository.get_roles_for_user_and_system(db, user.id, system.id)
+    token_roles = getattr(user, "token_roles", [])
+    system_id_str = str(system.id)
 
     permissions = set()
-    for user_role in user_roles:
-        role_permission_names = {rp.permission.name for rp in user_role.role.role_permissions}
-        permissions |= role_permission_names
+    for role_entry in token_roles:
+        if role_entry["system_id"] is None or role_entry["system_id"] == system_id_str:
+            permissions |= ROLE_PERMISSIONS.get(role_entry["role"], set())
 
     return permissions
 
