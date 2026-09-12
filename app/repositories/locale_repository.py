@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from app.cache import cache_get_local, cache_set_local
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 LOCALES_DIR = BASE_DIR / "locales"
 DEFAULT_LANGUAGE = "en"
@@ -13,23 +15,28 @@ def _load_json(file_path: Path) -> dict:
         return json.load(f)
 
 
-# Aliases eşlemelerini yükle
 LANGUAGE_ALIASES: dict[str, str] = _load_json(LOCALES_DIR / "aliases.json")
 
 
-# "locales/" altındaki aliases.json hariç tüm dil dosyalarını dinamik oku
 def _load_all_translations() -> dict[str, dict[str, str]]:
     translations = {}
     if LOCALES_DIR.exists():
         for file_path in LOCALES_DIR.glob("*.json"):
             if file_path.name == "aliases.json":
                 continue
-            lang_code = file_path.stem  # Örn: "tr.json" -> "tr"
+            lang_code = file_path.stem
             translations[lang_code] = _load_json(file_path)
     return translations
 
 
-TRANSLATIONS = _load_all_translations()
+def get_all_translations() -> dict[str, dict[str, str]]:
+    cached = cache_get_local("locale:all")
+    if cached is not None:
+        return cached
+
+    translations = _load_all_translations()
+    cache_set_local("locale:all", translations, ttl=3600)
+    return translations
 
 
 def normalize_language(raw_lang: str | None) -> str:
@@ -41,11 +48,11 @@ def normalize_language(raw_lang: str | None) -> str:
 
 
 def get_translation(key: str, lang: str) -> str:
-    # 1. İstenen dil dosyasında key'i ara
-    lang_dict = TRANSLATIONS.get(lang)
+    translations = get_all_translations()
+
+    lang_dict = translations.get(lang)
     if lang_dict and key in lang_dict:
         return lang_dict[key]
 
-    # 2. Bulunamazsa varsayılan dilde (en) ara (Fallback)
-    default_dict = TRANSLATIONS.get(DEFAULT_LANGUAGE, {})
+    default_dict = translations.get(DEFAULT_LANGUAGE, {})
     return default_dict.get(key, "Message not found")

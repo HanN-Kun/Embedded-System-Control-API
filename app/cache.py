@@ -50,3 +50,13 @@ def cache_set(key: str, value: dict | list, ttl: int = 300) -> None:
 def cache_delete(key: str) -> None:
     _local_delete(key)
     _redis_client.delete(key)
+
+def cache_get_local(key: str) -> dict | list | None:
+    local_value = _local_get(key)
+    if local_value is not None:
+        return json.loads(local_value)
+    return None
+
+
+def cache_set_local(key: str, value: dict | list, ttl: int = 3600) -> None:
+    _local_set(key, json.dumps(value), ttl)
