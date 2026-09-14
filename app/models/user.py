@@ -15,6 +15,8 @@ class User(Base):
     email = Column(String, unique=True)
     hashed_password = Column(String)
     is_active = Column(Boolean)
+    is_verified = Column(Boolean, default=False)
+    verification_token = Column(String, nullable=True)
 
     owned_systems = relationship("EmbeddedSystem", back_populates="owner")
     user_roles = relationship("UserRole", back_populates="user")

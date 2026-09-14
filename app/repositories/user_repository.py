@@ -12,6 +12,9 @@ def get_by_username_or_email(db: Session, username: str, email: str):
         (User.username == username) | (User.email == email)
     ).first()
 
+def get_by_verification_token(db: Session, token: str):
+    return db.query(User).filter(User.verification_token == token).first()
+
 
 def get_all(db: Session):
     return db.query(User).all()

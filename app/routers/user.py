@@ -10,8 +10,13 @@ router = APIRouter(prefix="/users", tags=["Users"])
 
 
 @router.post("/", response_model=UserResponse)
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    return user_service.create_user(db, user)
+async def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    return await user_service.create_user(db, user)
+
+
+@router.get("/verify")
+def verify_email(token: str, db: Session = Depends(get_db)):
+    return user_service.verify_email(db, token)
 
 
 @router.get("/", response_model=list[UserResponse])

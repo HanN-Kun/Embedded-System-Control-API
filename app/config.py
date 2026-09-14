@@ -6,6 +6,10 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
     redis_url: str = "redis://localhost:6379/0"
+    rabbitmq_url: str = "amqp://guest:guest@localhost:5672/"
+    gmail_address: str
+    gmail_app_password: str
+    virtual_sensor_id: str | None = None
 
     class Config:
         env_file = ".env"
