@@ -1,0 +1,209 @@
+2026-09-15 22:37:44,290 - app.core.exception_handlers - ERROR - Unhandled error on GET /embedded-systems/test-error: Sentry test hatası - bu kasıtlı
+Traceback (most recent call last):
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 376, in _sentry_exceptionmiddleware_call
+    await old_call(self, scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 209, in _create_span_call
+    return await old_call(app, scope, receive, send, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 209, in _create_span_call
+    return await old_call(app, scope, receive, send, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 223, in _sentry_app
+    return await _wrap_async_handler(old_app, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 155, in _wrap_async_handler
+    return await handler(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 215, in _sentry_call
+    return old_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\app\routers\embedded_system.py", line 32, in test_error
+    raise Exception("Sentry test hatası - bu kasıtlı")
+Exception: Sentry test hatası - bu kasıtlı
+2026-09-16 10:14:59,958 - app.core.exception_handlers - ERROR - Unhandled error on GET /users/: 4 validation errors:
+  {'type': 'bool_type', 'loc': ('response', 0, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+  {'type': 'bool_type', 'loc': ('response', 1, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+  {'type': 'bool_type', 'loc': ('response', 2, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+  {'type': 'bool_type', 'loc': ('response', 3, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 22, in list_users
+    GET /users/
+Traceback (most recent call last):
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 376, in _sentry_exceptionmiddleware_call
+    await old_call(self, scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 209, in _create_span_call
+    return await old_call(app, scope, receive, send, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 209, in _create_span_call
+    return await old_call(app, scope, receive, send, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 223, in _sentry_app
+    return await _wrap_async_handler(old_app, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 155, in _wrap_async_handler
+    return await handler(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 727, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 324, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 4 validation errors:
+  {'type': 'bool_type', 'loc': ('response', 0, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+  {'type': 'bool_type', 'loc': ('response', 1, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+  {'type': 'bool_type', 'loc': ('response', 2, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+  {'type': 'bool_type', 'loc': ('response', 3, 'is_verified'), 'msg': 'Input should be a valid boolean', 'input': None}
+
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 22, in list_users
+    GET /users/
+2026-09-16 11:47:35,248 - app.core.exception_handlers - ERROR - Unhandled error on GET /embedded-systems/test-error: Sentry test hatası - bu kasıtlı
+Traceback (most recent call last):
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 376, in _sentry_exceptionmiddleware_call
+    await old_call(self, scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 209, in _create_span_call
+    return await old_call(app, scope, receive, send, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\starlette.py", line 209, in _create_span_call
+    return await old_call(app, scope, receive, send, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 223, in _sentry_app
+    return await _wrap_async_handler(old_app, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 155, in _wrap_async_handler
+    return await handler(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\.venv\Lib\site-packages\sentry_sdk\integrations\fastapi.py", line 215, in _sentry_call
+    return old_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emirh\PycharmProjects\EmbedSystemProject\app\routers\embedded_system.py", line 32, in test_error
+    raise Exception("Sentry test hatası - bu kasıtlı")
+Exception: Sentry test hatası - bu kasıtlı

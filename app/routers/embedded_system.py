@@ -27,6 +27,10 @@ def list_embedded_systems(
 ):
     return embedded_system_service.list_systems(db, current_user)
 
+@router.get("/test-error")
+def test_error():
+    raise Exception("Sentry test hatası - bu kasıtlı")
+
 
 @router.get("/{system_id}", response_model=EmbeddedSystemResponse)
 def get_embedded_system(

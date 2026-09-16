@@ -15,7 +15,7 @@ async def run():
         await publish_sensor_reading(settings.virtual_sensor_id, value, time_stamp)
         print(f"Sahte veri gönderildi: sensor_id={settings.virtual_sensor_id}, value={value}", flush=True)
 
-        await asyncio.sleep(5)
+        await asyncio.sleep(settings.virtual_sensor_interval_seconds)
 
 if __name__ == "__main__":
     asyncio.run(run())

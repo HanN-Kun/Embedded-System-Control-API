@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     gmail_address: str
     gmail_app_password: str
     virtual_sensor_id: str | None = None
+    sentry_dsn: str | None = None
+    environment: str = "development"
+    virtual_sensor_interval_seconds: int = 60
 
     class Config:
         env_file = ".env"

@@ -1,11 +1,11 @@
-# app/messaging/email_publisher.py
+import uuid
 import json
 import aio_pika
 from app.messaging.connection import get_channel
 
 EMAIL_QUEUE = "email_verification_queue"
 
-async def publish_verification_email(user_id: int, email: str, verification_token: str):
+async def publish_verification_email(user_id: uuid.UUID, email: str, verification_token: str):
     channel = await get_channel()
     await channel.declare_queue(EMAIL_QUEUE, durable=True)
 
