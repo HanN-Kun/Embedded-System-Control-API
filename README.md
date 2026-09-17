@@ -54,10 +54,11 @@ The frontend also provides the authentication interface used for user registrati
 <h1>🖥️ Frontend Preview</h1>
 
 <p align="center">
-  <img src="./screenshots/dashboard.png" width="30%" />
-  <img src="./screenshots/sensor-monitoring.png" width="30%" />
-  <img src="./screenshots/login.png" width="30%" />
+  <img src="./Screenshots/dashboard.png" width="30%" />
+  <img src="./Screenshots/sensor-monitoring.png" width="30%" />
+  <img src="./Screenshots/login.png" width="30%" />
 </p>
+<img src="./Screenshots/dashboard.png" width="30%" />
 ---
 
 # 🏗️ Architecture
