@@ -46,7 +46,11 @@ async def main():
     connection = await aio_pika.connect_robust(settings.rabbitmq_url)
     channel = await connection.channel()
     await channel.set_qos(prefetch_count=5)
+
+    exchange = await channel.declare_exchange("sensor_exchange", type="fanout", durable=True)
     queue = await channel.declare_queue(SENSOR_QUEUE, durable=True)
+    await queue.bind(exchange)
+
     await queue.consume(on_message)
     print("Sensor worker dinlemede...", flush=True)
     await asyncio.Future()

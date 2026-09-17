@@ -1,12 +1,10 @@
 import json
 import aio_pika
-from app.messaging.connection import get_channel
-
-SENSOR_QUEUE = "sensor_data_queue"
+from app.messaging.connection import get_channel, declare_sensor_exchange
 
 async def publish_sensor_reading(sensor_id: str, value: float, time_stamp: str):
     channel = await get_channel()
-    await channel.declare_queue(SENSOR_QUEUE, durable=True)
+    exchange = await declare_sensor_exchange(channel)
 
     payload = {
         "sensor_id": sensor_id,
@@ -14,10 +12,10 @@ async def publish_sensor_reading(sensor_id: str, value: float, time_stamp: str):
         "time_stamp": time_stamp,
     }
 
-    await channel.default_exchange.publish(
+    await exchange.publish(
         aio_pika.Message(
             body=json.dumps(payload).encode(),
             delivery_mode=aio_pika.DeliveryMode.PERSISTENT,
         ),
-        routing_key=SENSOR_QUEUE,
+        routing_key="",
     )

@@ -12,3 +12,13 @@ async def get_rabbitmq_connection():
 async def get_channel():
     connection = await get_rabbitmq_connection()
     return await connection.channel()
+
+async def declare_sensor_exchange(channel):
+    return await channel.declare_exchange(
+        "sensor_exchange", type="fanout", durable=True
+    )
+
+async def declare_and_bind_queue(channel, exchange, queue_name: str):
+    queue = await channel.declare_queue(queue_name, durable=True)
+    await queue.bind(exchange)
+    return queue
