@@ -33,33 +33,26 @@ The application is built with a **layered architecture** and is fully containeri
 
 The backend API is integrated with a frontend application that provides a user-friendly interface for interacting with the embedded system and monitoring sensor data.
 
-### Dashboard
-
-The dashboard provides an overview of the system and allows users to interact with the available resources.
-
-![Dashboard](./screenshots/dashboard.png)
-
-### Real-Time Sensor Monitoring
-
-Sensor data can be monitored in real time through the frontend using the WebSocket connection provided by the backend.
-
-![Real-Time Sensor Monitoring](./screenshots/sensor-monitoring.png)
-
-### Authentication
-
-The frontend also provides the authentication interface used for user registration and login.
-
-![Authentication](./screenshots/login.png)
-
-<h1>🖥️ Frontend Preview</h1>
-
 <p align="center">
   <img src="./Screenshots/dashboard.png" width="30%" />
   <img src="./Screenshots/sensor-monitoring.png" width="30%" />
   <img src="./Screenshots/login.png" width="30%" />
 </p>
-<img src="./Screenshots/dashboard.png" width="30%" />
+
+### Dashboard
+
+The dashboard provides an overview of the system and allows users to interact with the available resources.
+
+### Real-Time Sensor Monitoring
+
+Sensor data can be monitored in real time through the frontend using the WebSocket connection provided by the backend.
+
+### Authentication
+
+The frontend also provides the authentication interface used for user registration and login.
+
 ---
+
 
 # 🏗️ Architecture
 
